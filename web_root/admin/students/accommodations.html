@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<!-- start right frame -->
+<head>
+		<title>504/SpEd Accommodations</title>
+		~[wc:UI_js_includes]
+		~[wc:commonscripts]
+		<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+		<link href="/images/css/print.css" rel="stylesheet" media="print">
+		<link rel="stylesheet" type="text/css" href="/images/boxing.css">
+
+		<script language="JavaScript" src="/admin/javascript/student_copyAddress.js"></script>
+		<style>
+			.clickable { cursor:pointer; }
+		</style>
+
+
+~[x:renderboundaryobject]
+
+</head>
+<body>
+
+<form action="/admin/changesrecorded.white.html" method="POST">
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.generaldemographics.start_page]</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">~[text:psx.html.admin_students.generaldemographics.student_selection]</a> &gt; 504/SpEd Accommodations<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+
+~[wc:title_student_begin_css]504/SpEd Accommodations~[wc:title_student_end_css]
+
+<!-- Start of shaded content table and bounding box -->
+<div class="box-round">
+
+<table border="0" cellspacing="0" cellpadding="4" class="linkDescList">
+<colgroup><col style="width:20%"><col></colgroup>
+
+
+<tr>
+		<td class="bold">Expires</td>
+		<td><input type="text" name="[01]accommodationsexpires" value="" size="10" class="psDateWidget"> <em style="font-size: 14px;">(<b>9/9/9999</b> to never expire)</em></td>
+</tr>
+<tr>
+	<td class="bold">
+		Labels
+	</td>
+	<td>
+		<table>
+			<tr style="background-color: #fff;">
+				<td><input id="IDEA_CD" name="[01]IDEA_CD" value="" type="checkbox"> <label for="IDEA_CD">CD - Cognitive Delay</label></td>
+				<td><input id="IDEA_AU" name="[01]IDEA_AU" value="" type="checkbox"> <label for="IDEA_AU">AU - Autism</label></td>
+			</tr>
+			<tr style="background-color: #fff;">
+				<td><input id="IDEA_HH_HI" name="[01]IDEA_HH_HI" value="" type="checkbox"> <label for="IDEA_HH_HI">HH/HI - Hearing Impairment</label></td>
+				<td><input id="IDEA_TBI" name="[01]IDEA_TBI" value="" type="checkbox"> <label for="IDEA_TBI">TBI - Traumatic Brain Injury</label></td>
+			</tr>
+			<tr style="background-color: #fff;">
+				<td><input id="IDEA_SL" name="[01]IDEA_SL" value="" type="checkbox"> <label for="IDEA_SL">SL - Speech or Language Impairment</label></td>
+				<td><input id="IDEA_OHI" name="[01]IDEA_OHI" value="" type="checkbox"> <label for="IDEA_OHI">OHI - Other Health Impairments</label></td>
+			</tr>
+			<tr style="background-color: #fff;">
+				<td><input id="IDEA_VI" name="[01]IDEA_VI" value="" type="checkbox"> <label for="IDEA_VI">VI - Visual Impairment</label></td>
+				<td><input id="IDEA_DB" name="[01]IDEA_DB" value="" type="checkbox"> <label for="IDEA_DB">DB - Deaf-Blindness</label></td>
+			</tr>
+			<tr style="background-color: #fff;">
+				<td><input id="IDEA_ED" name="[01]IDEA_ED" value="" type="checkbox"> <label for="IDEA_ED">ED - Emotional Disturbance</label></td>
+				<td><input id="IDEA_MD" name="[01]IDEA_MD" value="" type="checkbox"> <label for="IDEA_MD">MD - Multiple Disabilities</label></td>
+			</tr>
+			<tr style="background-color: #fff;">
+				<td><input id="IDEA_OI" name="[01]IDEA_OI" value="" type="checkbox"> <label for="IDEA_OI">OI - Orthopedic Impairment</label></td>
+				<td><input id="IDEA_SLD" name="[01]IDEA_SLD" value="" type="checkbox"> <label for="IDEA_SLD">SLD - Specific Learning Disabilities</label></td>
+			</tr>
+			<tr style="background-color: #fff;">
+				<td><input id="IDEA_D" name="[01]IDEA_D" value="" type="checkbox"> <label for="IDEA_D">D - Deafness</label></td>
+				<td><input id="IDEA_DD" name="[01]IDEA_DD" value="" type="checkbox"> <label for="IDEA_DD">DD - Developmentally Delayed</label></td>
+			</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+		<td class="bold">Accommodations</td>
+		<td><textarea name="[01]accommodations" rows="12" cols="80"></textarea></td>
+</tr>
+
+</table>
+
+<div class="button-row"><input type="hidden" name="ac" value="prim">~[submitbutton]</div>
+</div>
+<!-- End of shaded content table and bounding box -->
+
+~[wc:admin_footer_frame_css]
+</form>
+<!--</script>-->
+</body>
+</html><!-- end right frame -->
