@@ -18,9 +18,9 @@ and change the 9 to be the group number you want to see the link.
 
  - The other option is to use the same permissions as one of the other default pages. For example, the Special Programs page.
 
- ```
- ~[if.~(studentscreenaccess;specialprograms.html)=1]<a href="accommodations.html?frn=~(studentfrn)">Accommodations</a><br>[/if]
- ```
+```
+~[if.~(studentscreenaccess;specialprograms.html)=1]<a href="accommodations.html?frn=~(studentfrn)">Accommodations</a><br>[/if]
+```
 
 Usage
 -----
