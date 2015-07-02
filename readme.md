@@ -1,6 +1,8 @@
 PowerSchool-Accommodations
 ==========================
 
+# DEPRICATED - will be moving to an extended schema soon
+
 A simple accommodations screen and alert for admin and teachers.
 
 Installation
