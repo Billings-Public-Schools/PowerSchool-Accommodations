@@ -1,0 +1,49 @@
+~[tlist_sql;
+select
+  id,
+  studentsdcid,
+  to_char(startdate, 'MM/DD/YYYY'),
+  to_char(enddate, 'MM/DD/YYYY'),
+  accommodations,
+  au,
+  cd,
+  d,
+  db,
+  dd,
+  ed,
+  hi,
+  md,
+  ohi,
+  oi,
+  sl,
+  sld,
+  tbi,
+  vi
+from
+  u_accommodations
+where
+  id = ~[gpv:id]
+]
+{
+    "id": "~(id)",
+    "studentsdcid": "~(studentsdcid)",
+    "startdate": "~(startdate)",
+    "enddate": "~(enddate)",
+    "accommodations": "~(accommodations;js)",
+    "au": "~(au)",
+    "cd": "~(cd)",
+    "d": "~(d)",
+    "db": "~(db)",
+    "dd": "~(dd)",
+    "ed": "~(ed)",
+    "hi": "~(hi)",
+    "md": "~(md)",
+    "ohi": "~(ohi)",
+    "oi": "~(oi)",
+    "sl": "~(sl)",
+    "sld": "~(sld)",
+    "tbi": "~(tbi)",
+    "vi": "~(vi)"
+}
+[/tlist_sql]
+

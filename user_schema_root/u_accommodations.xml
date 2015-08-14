@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<psExtension xmlns="http://www.powerschool.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.powerschool.com psextension.xsd">
+  <extensionname>U_Accommodations</extensionname>
+  <extendedTable coreTable="Students" dbTableName="U_ACCOMMODATIONS" childName="U_ACCOMMODATIONS" comment="">
+    <field name="SL" type="Boolean" comment="Speech or Language Impairment"/>
+    <field name="DB" type="Boolean" comment="Deaf-Blindness"/>
+    <field name="D" type="Boolean" comment="Deafness"/>
+    <field name="accommodations" type="Clob"/>
+    <field name="VI" type="Boolean" comment="Visual Impairment"/>
+    <field name="TBI" type="Boolean" comment="Traumatic Brain Injury"/>
+    <field name="HI" type="Boolean" comment="Hearing Impairment"/>
+    <field name="OHI" type="Boolean" comment="Other Health Impairments"/>
+    <field name="AU" type="Boolean" comment="Autism"/>
+    <field name="ED" type="Boolean" comment="Emotional Disturbance"/>
+    <field name="DD" type="Boolean" comment="Developmentally Delayed"/>
+    <field name="startdate" type="Date"/>
+    <field name="MD" type="Boolean" comment="Multiple Disabilities"/>
+    <field name="SLD" type="Boolean" comment="Specific Learning Disabilities"/>
+    <field name="OI" type="Boolean" comment="Orthopedic Impairment"/>
+    <field name="enddate" type="Date"/>
+    <field name="CD" type="Boolean" comment="Cognitive Delay"/>
+  </extendedTable>
+</psExtension>

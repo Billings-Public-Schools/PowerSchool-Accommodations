@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<!-- start right frame -->
+<head>
+		<title>Edit Accommodations</title>
+		~[wc:UI_js_includes]
+		~[wc:commonscripts]
+		<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+		<link href="/images/css/print.css" rel="stylesheet" media="print">
+		<link rel="stylesheet" type="text/css" href="/images/boxing.css">
+
+		<script>
+		    var id = '~[gpv:id]';
+		    if (id === '') {
+		        window.location = '/admin/students/accommodations.html?frn=~[gpv:frn]';
+		    }
+		</script>
+		<style>
+			.clickable { cursor:pointer; }
+		</style>
+
+</head>
+<body>
+
+<input type="hidden" name="id" value="~[gpv:id]">
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.generaldemographics.start_page]</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">~[text:psx.html.admin_students.generaldemographics.student_selection]</a> &gt; <a href="accommodations.html?frn=~(frn)">504/SpEd Accommodations</a> &gt; ~[if.~[gpv:id]>0]Edit[else]New[/if] Accommodation<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+
+~[wc:title_student_begin_css]~[if.~[gpv:id]>0]Edit[else]New[/if] Accommodation~[wc:title_student_end_css]
+
+<!-- Start of shaded content table and bounding box -->
+~[DirectTable.Select:U_ACCOMMODATIONS;ID:~(gpv.id)]
+
+    <div class="box-round">
+<form action="accommodations.html?frn=~(frn)" method="POST" id="frmAccommodation">
+<table border="0" cellspacing="0" cellpadding="4" class="linkDescList">
+<colgroup><col style="width:20%"><col></colgroup>
+
+
+<tr>
+		<td class="bold" style="text-align: right">Start Date:</td>
+		<td><input id="startdate" name="[u_accommodations]startdate" size="10" class="psDateWidget required" style="padding: 3px" value=""> <span style="color: red">(Plan/IEP Start Date)</span></td>
+</tr>
+<tr>
+		<td class="bold" style="text-align: right">End Date:</td>
+		<td><input id="enddate" name="[u_accommodations]enddate" size="10" class="psDateWidget required" style="padding: 3px" value=""> <span style="color: red">(Plan/IEP End Date)</span></td>
+</tr>
+<tr>
+	<td class="bold" style="text-align: right">Labels:</td>
+	<td>
+		<table>
+			<tr style="background-color: #fff;">
+				<td><input id="cd" name="[u_accommodations]cd" type="checkbox" value="1"> <label for="cd">CD - Cognitive Delay</label></td>
+				<td><input id="au" name="[u_accommodations]au" type="checkbox" value="1"> <label for="au">AU - Autism</label></td>
+			</tr>
+			<tr style="background-color: #fff;">
+				<td><input id="hi" name="[u_accommodations]hi" type="checkbox" value="1"> <label for="hi">HI - Hearing Impairment</label></td>
+				<td><input id="tbi" name="[u_accommodations]tbi" type="checkbox" value="1"> <label for="tbi">TBI - Traumatic Brain Injury</label></td>
+			</tr>
+			<tr style="background-color: #fff;">
+				<td><input id="sl" name="[u_accommodations]sl" type="checkbox" value="1"> <label for="sl">SL - Speech or Language Impairment</label></td>
+				<td><input id="ohi" name="[u_accommodations]ohi" type="checkbox" value="1"> <label for="ohi">OHI - Other Health Impairments</label></td>
+			</tr>
+			<tr style="background-color: #fff;">
+				<td><input id="vi" name="[u_accommodations]vi" type="checkbox" value="1"> <label for="vi">VI - Visual Impairment</label></td>
+				<td><input id="db" name="[u_accommodations]db" type="checkbox" value="1"> <label for="db">DB - Deaf-Blindness</label></td>
+			</tr>
+			<tr style="background-color: #fff;">
+				<td><input id="ed" name="[u_accommodations]ed" type="checkbox" value="1"> <label for="ed">ED - Emotional Disturbance</label></td>
+				<td><input id="md" name="[u_accommodations]md" type="checkbox" value="1"> <label for="md">MD - Multiple Disabilities</label></td>
+			</tr>
+			<tr style="background-color: #fff;">
+				<td><input id="oi" name="[u_accommodations]oi" type="checkbox" value="1"> <label for="oi">OI - Orthopedic Impairment</label></td>
+				<td><input id="sld" name="[u_accommodations]sld" type="checkbox" value="1"> <label for="sld">SLD - Specific Learning Disabilities</label></td>
+			</tr>
+			<tr style="background-color: #fff;">
+				<td><input id="d" name="[u_accommodations]d" type="checkbox" value="1"> <label for="d">D - Deafness</label></td>
+				<td><input id="dd" name="[u_accommodations]dd" type="checkbox" value="1"> <label for="dd">DD - Developmentally Delayed</label></td>
+			</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+		<td style="min-width: 260px;">
+		    <strong style="display: block; text-align: right;">Accommodations:</strong>
+		    <div style="margin-left: 15px;">
+		        use an empty line for a new paragraph<br>
+		        - for a list<br>
+		        **bold**<br>
+		        _italicized_
+		    </div>
+		</td>
+		<td><textarea id="accommodations" name="[u_accommodations]accommodations" rows="12" cols="80"></textarea></td>
+</tr>
+<tr>
+    <td class="bold" style="text-align: right">Accommodations Preview:</td>
+    <td id="preview"></td>
+</tr>
+
+</table>
+<input type="hidden" name="ac" value="prim">
+</form>
+
+<div class="button-row">
+    ~[if.~[gpv:id]>0]
+    <form id="delete_button" action="accommodations.html?frn=~(studentfrn)" method="post">
+        <input type="hidden" name="ac" value="prim" />
+        <input type="hidden" name="DD-u_accommodations.ID:~(gpv.id)" value="1" />
+        <button type="submit" class="button confirmationReq initialized hide" id="btnDelete">Confirm Delete</button>
+        <button type="button" class="btnConfirmCancel hide">Cancel</button>
+        <button type="button" class="btnConfirmProxy">Delete</button>
+    </form>
+    [/if]
+    <button name="btnSubmit" id="btnSubmit" type="button">Submit</button>
+
+</div>
+
+</div>
+<!-- End of shaded content table and bounding box -->
+
+<script>
+require(['jquery', 'marked'], function($, marked) {
+    $(function() {
+        
+        // auto fill enddate = + 1 year - 1 day
+        $('#startdate').on('change', function() {
+            if ($('#enddate').val() === '') {
+                var startdate = new Date($('#startdate').val());
+                var enddate = startdate;
+                enddate.setFullYear(enddate.getFullYear() + 1);
+                enddate.setDate(enddate.getDate() - 1);
+                $('#enddate').val(enddate.toLocaleDateString());
+                $('#enddate').trigger('change');
+            }
+        });
+        
+        // delete buttons
+        var swapDeleteBtns = function() {
+            $('.btnConfirmProxy, .btnConfirmCancel, #btnDelete').toggleClass('hide');
+        };
+    
+        $('.btnConfirmProxy').on('click', swapDeleteBtns);
+        $('.btnConfirmCancel').on('click', swapDeleteBtns);
+    
+        $('#btnSubmit').on('click', function() {
+            $('#frmAccommodation').submit();
+        });
+        
+        // markdown preview
+        var preview = function() {
+            $('#preview').html(marked($('#accommodations').val()));
+        };
+        $('#accommodations').on('change', preview);
+        $('#accommodations').on('keyup', preview);
+        preview();
+    });
+});
+</script>
+
+~[wc:admin_footer_frame_css]
+<!--</script>-->
+</body>
+</html><!-- end right frame -->

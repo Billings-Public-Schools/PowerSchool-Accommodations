@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<!-- start right frame -->
+<head>
+		<title>504/SpEd Accommodations</title>
+		~[wc:UI_js_includes]
+		~[wc:commonscripts]
+		<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+		<link href="/images/css/print.css" rel="stylesheet" media="print">
+		<link rel="stylesheet" type="text/css" href="/images/boxing.css">
+
+		<style>
+			.clickable { cursor:pointer; }
+			
+		    .tooltip {
+                position: relative;
+            }
+            
+            .tooltip:hover:before{
+                border: solid;
+                border-color: #333 transparent;
+                border-width: 6px 6px 0 6px;
+                bottom: 20px;
+                content: "";
+                left: 50%;
+                position: absolute;
+                z-index: 99;
+            }
+        
+            .tooltip:hover:after{
+                background: #333;
+                background: rgba(0,0,0,.8);
+                border-radius: 5px;
+                bottom: 26px;
+                color: #fff;
+                content: attr(data-tip);
+                left: 20%;
+                padding: 5px 15px;
+                position: absolute;
+                z-index: 98;
+                width: 220px;
+            }
+		</style>
+
+</head>
+<body>
+
+<form action="/admin/changesrecorded.white.html" method="POST">
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.generaldemographics.start_page]</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">~[text:psx.html.admin_students.generaldemographics.student_selection]</a> &gt; 504/SpEd Accommodations<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+
+~[wc:title_student_begin_css]504/SpEd Accommodations~[wc:title_student_end_css]
+
+<!-- Start of shaded content table and bounding box -->
+<div class="box-round">
+
+<div class="button-row"><a href="accommodationedit.html?frn=~(frn)&id=-1" class="button">New</a></div>
+<table class="grid">
+    <thead>
+        <tr>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Cognitive Delay">CD</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Autism">AU</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Hearing Impairment">HI</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Traumatic Brain Injury">TBI</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Speech or Language Impairment">SL</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Other Health Impairments">OHI</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Visual Impairment">VI</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Deaf-Blindness">DB</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Emotional Disturbance">ED</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Multiple Disabilities">MD</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Orthopedic Impairment">OI</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Specific Learning Disabilities">SLD</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Deafness">D</th>
+            <th style="text-align: center;" class="tooltip" data-tip="Developmentally Delayed">DD</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        ~[tlist_sql;
+            select
+                to_char(startdate, 'MM/DD/YYYY'),
+                to_char(enddate, 'MM/DD/YYYY'),
+                case cd when 1 then '✔︎' end,
+                case au when 1 then '✔' end,
+                case hi when 1 then '✔' end,
+                case tbi when 1 then '✔' end,
+                case sl when 1 then '✔' end,
+                case ohi when 1 then '✔' end,
+                case vi when 1 then '✔' end,
+                case db when 1 then '✔' end,
+                case ed when 1 then '✔' end,
+                case md when 1 then '✔' end,
+                case oi when 1 then '✔' end,
+                case sld when 1 then '✔' end,
+                case d when 1 then '✔' end,
+                case dd when 1 then '✔' end,
+                id,
+                studentsdcid
+            from
+                u_accommodations
+            where
+                studentsdcid = ~(rn)
+            order by
+                startdate desc
+        ;]
+        <tr>
+            <td style="text-align: center;">~(startdate)</td>
+            <td style="text-align: center;">~(enddate)</td>
+            <td style="text-align: center;">~(cd)</td>
+            <td style="text-align: center;">~(au)</td>
+            <td style="text-align: center;">~(hi)</td>
+            <td style="text-align: center;">~(tbi)</td>
+            <td style="text-align: center;">~(sl)</td>
+            <td style="text-align: center;">~(ohi)</td>
+            <td style="text-align: center;">~(vi)</td>
+            <td style="text-align: center;">~(db)</td>
+            <td style="text-align: center;">~(ed)</td>
+            <td style="text-align: center;">~(md)</td>
+            <td style="text-align: center;">~(oi)</td>
+            <td style="text-align: center;">~(sld)</td>
+            <td style="text-align: center;">~(d)</td>
+            <td style="text-align: center;">~(dd)</td>
+            <td style="text-align: center;">
+                <a href="/~[directory]/alerts/accommodationalert.html?id=~(id)" class="button dialogM" title="Accommodations">View</a>
+                <a href="accommodationedit.html?frn=001~(rn)&id=~(id)" class="button">Edit</a>
+            </td>
+        </tr>
+        [/tlist_sql]
+    </tbody>
+</table>
+
+
+
+</div>
+<!-- End of shaded content table and bounding box -->
+
+~[wc:admin_footer_frame_css]
+</form>
+<!--</script>-->
+</body>
+</html><!-- end right frame -->

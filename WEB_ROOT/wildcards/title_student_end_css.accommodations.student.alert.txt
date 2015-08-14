@@ -1,0 +1,23 @@
+~[tlist_sql;
+select
+  a.id
+from
+  students s
+  left join u_accommodations a
+    on a.studentsdcid = s.dcid
+where
+  s.id = ~(curstudid)
+  and (
+    current_date >= a.startdate
+    or startdate is null
+  )
+  and (
+    current_date <= a.enddate + 1
+    or enddate is null
+  )
+  and a.id is not null
+]
+<a class="dialogM" title="Accommodations Alert" href="/~[directory]/alerts/accommodationalert.html?id=~(id)" style="visibility: visible">
+    <img src="/images/accommodations_icon.png" width="20">
+</a>
+[/tlist_sql]

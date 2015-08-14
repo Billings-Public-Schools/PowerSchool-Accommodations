@@ -1,0 +1,62 @@
+<div id="accommodationsmodal" style="max-width: 700px;">
+		<img class="alertImage" src="/images/accommodations_icon.png" />
+		<div class="alertContent">
+			<h3>~(studentname)</h3>
+			<p><strong>Start Date:</strong> <span id="startdate"></span><br>
+			<strong>End Date:</strong> <span id="enddate"></span><br>
+			<strong>Labels: </strong> <ul id="labels" style="margin-left: 50px"></ul></p>
+			<p><strong>Accommodations:</strong></p>
+			<p style="margin-left: 30px"><span id="accommodations"></span></p>
+			
+		</div>
+</div>
+
+<script>
+require(['jquery', 'marked'], function($, marked) {
+$(function() {
+    var expandLabel = {
+        'au': 'Autism',
+        'cd': 'Cognitive Delay',
+        'd': 'Deafness',
+        'db': 'Deaf-Blindness',
+        'dd': 'Developmentally Delayed',
+        'ed': 'Emotional Disturbance',
+        'hi': 'Hearing Impairment',
+        'md': 'Multiple Disabilities',
+        'ohi': 'Other Health Impairments',
+        'oi': 'Orthopedic Impairment',
+        'sl': 'Speech or Language Impairment',
+        'sld': 'Specific Learning Disabilities',
+        'tbi': 'Traumatic Brain Injury',
+        'vi': 'Visual Impairment'
+    }
+    
+    $.ajax({
+        url: '/~[directory]/bps/api/accommodation.json?id=~[gpv:id]',
+        dataType: 'text',
+        success: function(data) {
+            
+            data = JSON.parse(data.replace(/\\'/g, "'"));
+            $.each(data, function(d) {
+                var text = data[d];
+                //text = text.replace(/\n/g,"<br>");
+                if ( d === 'accommodations' ) {
+                    $('#accommodationsmodal span#accommodations').html(marked(text));
+                } else {
+                    $('#accommodationsmodal span#' + d).html(text);
+                }
+                if ($.inArray(d, Object.keys(expandLabel)) >= 0) {
+                    if (data[d] === '1') {
+                        $('#accommodationsmodal ul#labels').append('<li>' + expandLabel[d] + '</li>');
+                    }
+                }
+            });
+            
+            $('#accommodationsmodal').parent().parent().css('top', '100px');
+            $('#accommodationsmodal').parent().parent().css('left', '100px');
+        }
+    });
+    
+});
+});
+</script>
