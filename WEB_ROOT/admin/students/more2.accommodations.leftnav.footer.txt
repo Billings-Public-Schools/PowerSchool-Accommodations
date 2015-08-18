@@ -1,14 +1,12 @@
+~[if.security.inrole=2,3,9,10,15]
+
 <script>
-require(['jquery','tinysort'], function($, tinysort) {
-$(function() {
+    require(['jquery','tinysort'], function($, tinysort) {
 
-// change the list of numbers to be the groups that you want to see the link.
-~[if.~[f.in;value=~[f.table_info;table=Teachers;*Id=~[x:userid];fn=value;dothisfor=ALL;field=group;fieldtype=INT];in=2,3,9,10,15]=1]
-$('#std_academics').prepend('<li><a href="accommodations.html?frn=~(studentfrn)">Accommodations</a></li>');
-[/if]
+        $('#std_academics').prepend('<li><a href="accommodations.html?frn=~(studentfrn)">Accommodations</a></li>');
+        tinysort('#std_academics>li');
 
-tinysort('#std_academics>li');
-
-});
-});
+    });
 </script>
+
+[/if]
